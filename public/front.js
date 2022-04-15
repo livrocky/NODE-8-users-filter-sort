@@ -5,7 +5,7 @@ const listEl = document.getElementById('list');
 const sortAgeBtn = document.getElementById('ageSort');
 const orderDisplayEl = sortAgeBtn.querySelector('span');
 
-let sortOrder = 'DESC';
+let sortOrder = 'ASC';
 orderDisplayEl.textContent = sortOrder;
 
 function renderUsers(userArr) {
