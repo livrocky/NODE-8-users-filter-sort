@@ -1,8 +1,11 @@
 const express = require('express');
-const cors = require('cors');
+const morgan = require('morgan');
+const { PORT } = require('./config');
+
 const app = express();
 
-const PORT = 3002;
+// Global MiddleWare
+app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
   res.json('Hello world');
