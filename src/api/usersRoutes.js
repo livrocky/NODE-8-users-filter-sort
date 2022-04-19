@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const express = require('express');
 const { dbClient } = require('../config');
+const { findUserKaunas } = require('../model/usersModel');
 
 const userRoutes = express.Router();
 
@@ -72,5 +73,16 @@ userRoutes.get('/api/users/students', async (req, res) => {
 
 // prisideti 3 skirtingus miestus, po viena kiekvienam studentui
 // GET /api/users/town/London - parsiuncia tik is to miesto
+
+userRoutes.get('/api/users/town/Kaunas', async (req, res) => {
+  console.log('usersRoutes.get /users/town/Kaunas ran');
+  const kaunasArr = await findUserKaunas();
+
+  if (kaunasArr === false) {
+    res.status(500).json('something went wrong');
+    return;
+  }
+  res.json(kaunasArr);
+});
 
 module.exports = userRoutes;
